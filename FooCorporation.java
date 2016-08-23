@@ -1,7 +1,7 @@
 package fooCorporation;
 
 public class FooCorporation {
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
         String emp1 = "Kaz", emp2 = "Amanda", emp3 = "Mike";
         double emp1Pay = 7.50, emp2Pay = 8.20, emp3Pay = 10.00;
@@ -18,16 +18,18 @@ public class FooCorporation {
         final double OVER_BASE_PAY = 1.5;
         final double WORKING_HORSE_HOURS = 60;
         final double STANDARD_PAY = 8;
-        if (pay < STANDARD_PAY || hrs > WORKING_HORSE_HOURS) {
-            System.out.println("Achtung! Your employees are not chinese or animals! They should be highly paid! And have a rest!");
+        if (pay < STANDARD_PAY) {
+            System.out.println("Achtung! Your employees are not chinese! They should be highly paid!");
+        } else if (hrs > WORKING_HORSE_HOURS)  {
+            System.out.println("Achtung! Your employees are not animals! They should have a rest!");
         } else if (hrs <= STANDARD_HOURS) {
             double empPay = pay * hrs;
             System.out.println(emp + " has worked " + hrs + "hrs for a pay amount of " + empPay);
-        } else if (hrs > STANDARD_HOURS) {
+        } else {
             double overHours = hrs - STANDARD_HOURS;
             double overPay = overHours * (pay * OVER_BASE_PAY);
             double empPay = pay * STANDARD_HOURS + overPay;
             System.out.println(emp + " has worked " + hrs + "hrs for a pay amount of " + empPay);
         }
-    }
+   }
 }
