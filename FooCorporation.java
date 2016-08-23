@@ -1,35 +1,33 @@
 package fooCorporation;
 
 public class FooCorporation {
-   public static void main(String[] args) {
+    static final double STANDARD_HOURS = 40;
+    static final double OVER_BASE_PAY = 1.5;
+    static final double WORKING_HORSE_HOURS = 60;
+    static final double STANDARD_PAY = 8;
 
-        String emp1 = "Kaz", emp2 = "Amanda", emp3 = "Mike";
-        double emp1Pay = 7.50, emp2Pay = 8.20, emp3Pay = 10.00;
-        double emp1Hrs = 35, emp2Hrs = 47, emp3Hrs = 73;
 
-        calcPay(emp1,emp1Pay,emp1Hrs);
-        calcPay(emp2,emp2Pay,emp2Hrs);
-        calcPay(emp3,emp3Pay,emp3Hrs);
+    private static void calcPay(String employee, double salary, int hours) {
+
+        if (salary < STANDARD_PAY) {
+            System.out.println("Achtung! Your employees are not chinese! They should be highly paid!");
+        } else if (hours > WORKING_HORSE_HOURS)  {
+            System.out.println("Achtung! Your employees are not animals! They should have a rest!");
+        } else if (hours <= STANDARD_HOURS) {
+            double finalSalary = salary * hours;
+            System.out.println(employee + " has worked " + hours + "hrs for a pay amount of " + finalSalary);
+        } else {
+            double overHours = hours - STANDARD_HOURS;
+            double overSalary = overHours * (salary * OVER_BASE_PAY);
+            double finalSalary = salary * STANDARD_HOURS + overSalary;
+            System.out.println(employee + " has worked " + hours + "hrs for a pay amount of " + finalSalary);
+        }
     }
 
-    private static void calcPay(String emp, double pay, double hrs) {
+    public static void main(String[] args) {
 
-        final double STANDARD_HOURS = 40;
-        final double OVER_BASE_PAY = 1.5;
-        final double WORKING_HORSE_HOURS = 60;
-        final double STANDARD_PAY = 8;
-        if (pay < STANDARD_PAY) {
-            System.out.println("Achtung! Your employees are not chinese! They should be highly paid!");
-        } else if (hrs > WORKING_HORSE_HOURS)  {
-            System.out.println("Achtung! Your employees are not animals! They should have a rest!");
-        } else if (hrs <= STANDARD_HOURS) {
-            double empPay = pay * hrs;
-            System.out.println(emp + " has worked " + hrs + "hrs for a pay amount of " + empPay);
-        } else {
-            double overHours = hrs - STANDARD_HOURS;
-            double overPay = overHours * (pay * OVER_BASE_PAY);
-            double empPay = pay * STANDARD_HOURS + overPay;
-            System.out.println(emp + " has worked " + hrs + "hrs for a pay amount of " + empPay);
-        }
-   }
+        calcPay("Kaz",7.50,35);
+        calcPay("Amanda",8.20,47);
+        calcPay("Mike",10.00,73);
+    }
 }
